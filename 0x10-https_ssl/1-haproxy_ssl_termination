@@ -39,8 +39,7 @@ listen balancer
                                                                   #--scootalx.tech-params-begin--
 frontend scootalx.tech-frontend
         bind *:80
-        bind *:443 ssl crt /etc/haproxy/certs/www.scootalx.tech.pe
-m
+       bind *:443 ssl crt /etc/haproxy/certs/www.scootalx.tech.pem
         acl letsencrypt-acl path_beg /.well-known/acme-challenge/
         http-request set-header X-Forwarded-Proto http
         # ADDITIONS
