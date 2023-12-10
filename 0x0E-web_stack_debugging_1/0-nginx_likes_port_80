@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
-#Sets nginx for listening to 80 port
-sudo sed -i "s/8080/80/" /etc/nginx/sites-enabled/default
+nx must be running, and listening on port 80
+sudo sed -i "s/sites-enabled/sites-available/" /etc/nginx/nginx.conf
 sudo service nginx restart
