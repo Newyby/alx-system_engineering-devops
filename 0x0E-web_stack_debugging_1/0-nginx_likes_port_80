@@ -1,17 +1,4 @@
 #!/usr/bin/env bash
-det Nginx to listen on port 80
+#Sets nginx for listening to 80 port
 sudo sed -i "s/8080/80/" /etc/nginx/sites-enabled/default
-
-# Check if sed command succeeded
-if [ $? -eq 0 ]; then
-    # Restart Nginx
-    sudo service nginx restart
-    # Check if Nginx restart succeeded
-    if [ $? -eq 0 ]; then
-        echo "Nginx configured successfully and restarted on port 80."
-    else
-        echo "Error: Failed to restart Nginx."
-    fi
-else
-    echo "Error: Failed to update Nginx configuration."
-fi
+sudo service nginx restart
