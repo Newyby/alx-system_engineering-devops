@@ -1,14 +1,3 @@
-#!/bin/bash
-
-# Specify the path to your Gunicorn process ID file
-PID_FILE="/path/to/gunicorn.pid"
-
-# Send a HUP signal to the master process to gracefully reload workers
-if [ -f "$PID_FILE" ]; then
-    echo "Reloading Gunicorn gracefully..."
-    kill -HUP $(cat "$PID_FILE")
-    echo "Reload complete."
-else
-    echo "Gunicorn PID file not found. Ensure Gunicorn is running and the PID file path is correct."
-fi
-
+#!/usr/bin/env bash
+# ReloadsGunicorn
+systemctl status gunicorn | grep -oE 'Main PID: [0-9]+' | cut -d ' ' -f3 | xargs kill -HUP
